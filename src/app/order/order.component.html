@@ -1,0 +1,102 @@
+<div class="container">
+    <form class="form" (ngSubmit)="orderButtonClicked()">
+    <table>
+    <tr>
+        <td colspan="2" class="new-order">Create a new production order</td>
+    </tr>
+    <tr>
+    <td>Production Order Number: </td>
+    <td>
+        <input type="text" name="ordernumber" [(ngModel)]="order.ordernumber" />
+    </td>
+</tr>
+    <tr>
+    <td>
+        Plant Location: 
+    </td>
+    <td>
+        <select name="location" [(ngModel)]="order.location">     
+            <option value="0">-- Select Location --</option>
+            <option value="Ringaskiddy XYZ">Ringaskiddy XYZ</option>
+            <option value="Kinsale ABC">Kinsale ABC</option>
+            <option value="Raheen 123">Raheen 123</option>
+        </select>
+        <!-- Below I populate with database results returned from web API call-->
+        <!-- <select name="location" [(ngModel)]="order.location">   
+            <option value="default">-- Select plant --</option>  
+            <option *ngFor="let option of plants" [ngValue]="option.plantid">{{ option.plantname }}</option>
+        </select> -->
+    </td>
+</tr>
+<tr>
+    <td>
+        Finished Material:
+    </td>
+    <td>        
+        <select name="material" [(ngModel)]="order.material">     
+        <option value="0">-- Select Material --</option>
+        <option value="Paracetamol">Paracetamol</option>
+        <option value="Gaviscon">Gaviscon</option>
+        <option value="Claritin">Claritin</option>
+        <option value="Strepcils">Strepcils</option>
+        <option value="Lemsip">Lemsip</option>
+        </select>
+        <!-- Below I populate with database results returned from web API call-->
+        <!-- <select name="material" [(ngModel)]="order.material">     
+            <option value="default">-- Select material --</option>  
+            <option *ngFor="let option of materials" [ngValue]="option.materialid">{{ option.materialname }}</option>
+        </select> -->
+    </td>
+</tr>
+<tr>
+    <td>
+        Quantity:
+    </td>
+    <td>
+        <input type="text" name="quantity" [(ngModel)]="order.quantity"/>
+    </td>
+</tr>
+<tr>
+    <td>
+        Unit of Measure:
+    </td>
+    <td>
+        <select name="uom" [(ngModel)]="order.uom">     
+            <option value="0">-- Select Unit of Measure --</option>
+            <option value="Gram">Gram</option>
+            <option value="Kilogram">Kilogram</option>
+            <option value="Milligram">Milligram</option>
+            <option value="Liter">Liter</option>
+            <option value="Milliliter">Milliliter</option>
+        </select>
+        <!-- Below I populate with database results returned from web API call-->
+        <!-- <select name="uom" [(ngModel)]="order.uom">     
+            <option value="default">-- Select Unit of Measure --</option>  
+            <option *ngFor="let option of uoms" [ngValue]="option.unitid">{{ option.unitname }}</option>
+        </select> -->
+    </td>  
+</tr>
+<tr>
+    <td colspan="2">
+        <button class="button cta" type="submit">Create Order</button>
+    </td>
+</tr>
+    </table>
+</form>
+</div>
+<div class="container" style="margin-top: 50px;">
+    <table style="border: 1px solid black" width="400px">
+        <tr>
+            <th>PO Number</th>
+            <th>Material</th>
+            <th>Quantity</th>
+            <th>UOM</th>
+        </tr>
+        <tr *ngFor="let order of orders">
+            <td>PO # should appear here</td>
+            <td>{{ order.material}}</td>
+            <td>{{ order.quantity}}</td>
+            <td>{{ order.uom}}</td>
+        </tr>
+    </table>
+</div>
